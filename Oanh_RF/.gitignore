@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+archive/
+rf_dataset/
+rf_features/
+rf_models/
+check_crops/
+
+*.pkl
+*.npy
+
+.DS_Store
