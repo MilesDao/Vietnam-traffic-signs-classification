@@ -33,25 +33,6 @@ Original traffic-sign images
 
 ```
 
-## Dataset Structure
-
-The original dataset should be organized as follows:
-
-```txt
-archive/
-├── images/
-│   ├── image_1.jpg
-│   ├── image_2.jpg
-│   └── ...
-├── labels/
-│   ├── image_1.txt
-│   ├── image_2.txt
-│   └── ...
-└── split_dataset/
-    ├── train_files.txt
-    └── test_files.txt
-```
-
 ## Important Files
 
 | File | Description |
@@ -82,7 +63,8 @@ The required packages are:
 | `scikit-learn` | Trains and evaluates the Random Forest model |
 | `matplotlib` | Visualizes the confusion matrix |
 | `joblib` | Saves and loads the trained model |
-```
+
+
 
 
 ## How to Run
