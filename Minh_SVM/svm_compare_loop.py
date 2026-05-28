@@ -27,7 +27,7 @@ print("X_train:", X_train.shape)
 print("X_test:", X_test.shape)
 
 # Define parameter lists to compare
-c_list = [0.1, 1.0, 10.0]
+c_list = [0.1, 1.0, 10.0, 100.0]
 gamma_list = ["scale", "auto"]
 kernel_list = ["rbf", "linear"]
 
