@@ -26,8 +26,8 @@ print("y_test:", y_test.shape)
 print("Training Random Forest...")
 
 rf = RandomForestClassifier(
-    n_estimators=400,
-    max_depth=None,
+    n_estimators=300,
+    max_depth=30,
     max_features="sqrt",
     random_state=42,
     n_jobs=-1,
