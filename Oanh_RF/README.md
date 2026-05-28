@@ -42,7 +42,7 @@ Original traffic-sign images
 | `prepare_rf_features.py` | Loads cropped images, resizes them to `64 × 64`, normalizes pixel values to `[0, 1]`, flattens images into feature vectors, and saves them as `.npy` files. |
 | `train_random_forest.py` | Loads prepared features, trains a Random Forest classifier, evaluates basic test accuracy, and saves the trained model as a `.pkl` file. |
 | `evaluate_random_forest.py` | Loads the trained model, predicts on the test set, generates accuracy, classification report, and confusion matrix. |
-| `main.ipynb` | Notebook version used for experimentation, explanation, and step-by-step project workflow. |
+
 
 
 ## Installation
@@ -141,7 +141,6 @@ rf_results/
 └── confusion_matrix.png
 ```
 
----
 
 ## Expected Outputs
 
@@ -155,7 +154,6 @@ rf_models/                   # Saved Random Forest model
 rf_results/                  # Evaluation reports and confusion matrix
 ```
 
----
 
 ## Results
 
@@ -179,28 +177,8 @@ The confusion matrix image is saved in:
 rf_results/confusion_matrix.png
 ```
 
-To display the confusion matrix in this README, add:
 
-```markdown
-![Confusion Matrix](rf_results/confusion_matrix.png)
-```
 
----
-
-## Demo
-
-A simple demo can be shown using cropped traffic sign images.
-
-Example crop result:
-
-```markdown
-![Sample Crop](check_crops/sample_crop.jpg)
-```
-
-Note: This Random Forest model requires cropped traffic sign images as input.  
-It does not detect traffic signs directly from full road-scene images.
-
----
 
 ## Model Explanation
 
@@ -216,8 +194,8 @@ The model configuration used in this branch is:
 
 ```python
 RandomForestClassifier(
-    n_estimators=100,
-    max_depth=None,
+    n_estimators=300,
+    max_depth=30,
     max_features="sqrt",
     random_state=42,
     n_jobs=-1,
@@ -225,7 +203,7 @@ RandomForestClassifier(
 )
 ```
 
----
+
 
 ## Limitations
 
@@ -237,7 +215,7 @@ This Random Forest branch has some limitations:
 - Model performance may decrease if the cropped image is blurry, too small, or incorrectly cropped.
 - Class names are currently represented by numeric class IDs such as `class_0`, `class_1`, and so on.
 
----
+
 
 ## Future Improvements
 
@@ -250,7 +228,7 @@ Possible improvements include:
 - Add a validation set for better model selection.
 - Compare Random Forest results with SVM and YOLO results.
 
----
+
 
 ## Credits
 
@@ -264,7 +242,7 @@ Team approaches:
 - SVM approach: Traditional machine learning classification
 - Random Forest approach: Traditional machine learning classification
 
----
+
 
 ## License
 
