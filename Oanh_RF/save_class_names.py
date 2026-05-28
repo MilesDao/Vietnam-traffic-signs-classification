@@ -2,7 +2,7 @@ import json
 import os
 
 class_file = "archive/classes_en.txt"
-out_file = "rf_features/class_names.json"
+out_file = "Class_name/class_names.json"
 
 if not os.path.exists(class_file):
     class_file = "archive/classes_en.txt"
