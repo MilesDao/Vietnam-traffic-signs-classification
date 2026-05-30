@@ -64,11 +64,11 @@ Traditional classifiers (SVM, Random Forest) require uniform feature inputs. The
 
 ```mermaid
 graph TD
-    A[Raw Road Scenes + YOLO Annotations] --> B[Crop Bounding Box + 5% Padding]
-    B --> C[Resize to 64 × 64 Pixels]
-    C --> D[Normalize Intensities to [0,1]]
-    D --> E[Flatten into 1D Vector - 12,288 features]
-    E --> F[Train Classifiers]
+    A["Raw Road Scenes + YOLO Annotations"] --> B["Crop Bounding Box + 5% Padding"]
+    B --> C["Resize to 64 × 64 Pixels"]
+    C --> D["Normalize Intensities to [0,1]"]
+    D --> E["Flatten into 1D Vector (12,288 features)"]
+    E --> F["Train Classifiers"]
 ```
 
 1. **Context-Aware Cropping**: Bounding boxes are cropped from raw images, adding a **5% padding** to capture surrounding boundary lines, helping the classifier recognize the sign edges.
