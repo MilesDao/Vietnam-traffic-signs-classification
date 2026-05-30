@@ -27,7 +27,7 @@ print("X_train:", X_train.shape)
 print("X_test:", X_test.shape)
 
 # Define parameter lists to compare
-c_list = [0.1, 1.0, 10.0]
+c_list = [0.1, 1.0, 10.0, 100.0]
 gamma_list = ["scale", "auto"]
 kernel_list = ["rbf", "linear"]
 
@@ -60,13 +60,16 @@ for c in c_list:
 
             end = time.time()
 
+            y_pred_train = svm.predict(X_train)
             y_pred = svm.predict(X_test)
 
+            train_acc = accuracy_score(y_train, y_pred_train)
             acc = accuracy_score(y_test, y_pred)
             f1 = f1_score(y_test, y_pred, average="macro", zero_division=0)
             train_time = end - start
 
-            print("Accuracy:", acc)
+            print("Train Acc:", train_acc)
+            print("Test Acc:", acc)
             print("Macro F1:", f1)
             print("Training time:", round(train_time, 2), "seconds")
 
@@ -74,7 +77,8 @@ for c in c_list:
                 "C": c,
                 "gamma": g,
                 "kernel": k,
-                "accuracy": acc,
+                "train_accuracy": train_acc,
+                "test_accuracy": acc,
                 "macro_f1": f1,
                 "training_time": train_time
             })
@@ -86,7 +90,7 @@ df.to_csv(csv_path, index=False)
 
 print("\nSaved results to:", csv_path)
 
-best = df.sort_values(by="accuracy", ascending=False).iloc[0]
+best = df.sort_values(by="test_accuracy", ascending=False).iloc[0]
 
 print("\nBest configuration:")
 print(best)
@@ -98,11 +102,11 @@ plt.figure(figsize=(8, 5))
 
 for g in gamma_list:
     temp = df[(df["kernel"] == "rbf") & (df["gamma"] == g)]
-    plt.plot(temp["C"], temp["accuracy"], marker="o", label=f"gamma={g}")
+    plt.plot(temp["C"], temp["test_accuracy"], marker="o", label=f"gamma={g}")
 
-plt.title("Accuracy Comparison by C parameter (RBF Kernel)")
+plt.title("Test Accuracy Comparison by C parameter (RBF Kernel)")
 plt.xlabel("C")
-plt.ylabel("Accuracy")
+plt.ylabel("Test Accuracy")
 plt.xscale('log')
 plt.xticks(c_list, [str(c) for c in c_list])
 plt.legend()
@@ -123,7 +127,7 @@ plt.figure(figsize=(8, 5))
 # We fix gamma="scale" to compare kernels across C
 for k in kernel_list:
     temp = df[(df["gamma"] == "scale") & (df["kernel"] == k)]
-    plt.plot(temp["C"], temp["accuracy"], marker="o", label=f"kernel={k}")
+    plt.plot(temp["C"], temp["test_accuracy"], marker="o", label=f"kernel={k}")
 
 plt.title("Accuracy Comparison by Kernel Type")
 plt.xlabel("C")
@@ -163,3 +167,28 @@ plt.savefig(fig_path3, dpi=300)
 plt.close()
 
 print("Saved:", fig_path3)
+
+# ---------------------------------------------------------
+# Chart 4: Compare Train vs Test accuracy (Overfitting Check)
+# ---------------------------------------------------------
+plt.figure(figsize=(8, 5))
+
+# We fix gamma="scale" and kernel="rbf"
+temp = df[(df["gamma"] == "scale") & (df["kernel"] == "rbf")]
+plt.plot(temp["C"], temp["train_accuracy"], marker="o", linestyle="--", label="Train Accuracy")
+plt.plot(temp["C"], temp["test_accuracy"], marker="s", linestyle="-", label="Test Accuracy")
+
+plt.title("Train vs Test Accuracy (Overfitting Check) - RBF Kernel")
+plt.xlabel("C")
+plt.ylabel("Accuracy")
+plt.xscale('log')
+plt.xticks(c_list, [str(c) for c in c_list])
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+
+fig_path4 = os.path.join(out_dir, "overfitting_check.png")
+plt.savefig(fig_path4, dpi=300)
+plt.close()
+
+print("Saved:", fig_path4)

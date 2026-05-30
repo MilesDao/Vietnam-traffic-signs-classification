@@ -1,8 +1,5 @@
-Accuracy: 0.9672
-Accuracy percentage : 96.72%
-==========================================
-Classification report:
-==========================================
+Test Accuracy: 0.9672
+
               precision    recall  f1-score   support
 
            0       0.89      0.89      0.89        61
