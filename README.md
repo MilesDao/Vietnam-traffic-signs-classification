@@ -49,6 +49,7 @@ Vietnam-traffic-signs-classification/
 
 The system classifies traffic signs into **52 distinct classes** commonly found on Vietnamese roads, including speed limits, warning signs, and regulatory markers.
 
+- **Dataset Source**: The raw data is sourced from Kaggle: [Vietnamese Traffic Signs](https://www.kaggle.com/datasets/maitam/vietnamese-traffic-signs/data).
 - **Data format**: Raw images (`Vietnam_traffic_sign/images/`) and their corresponding YOLO annotation text files (`Vietnam_traffic_sign/labels/`) containing coordinates in the standard format:
   ```txt
   <class_id> <x_center> <y_center> <width> <height>
