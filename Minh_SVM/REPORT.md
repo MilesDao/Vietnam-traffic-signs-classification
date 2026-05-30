@@ -34,7 +34,7 @@ Through rigorous `RandomizedSearchCV` iterations and manual grid comparison, we 
 *   **Gamma**: **`scale`**
 *   **Class Weight**: **`balanced`** *(Crucial for handling the heavily imbalanced nature of the dataset).*
 
-**🏆 Final Performance Metrics:**
+** Final Performance Metrics:**
 *   **Test Accuracy: `96.72%`** *(A massive leap from the 91.0% Baseline model).*
 *   **Macro F1-Score: `95.39%`** *(Demonstrating that the model performs exceptionally well across all 52 classes, accurately classifying even the rarest traffic signs).*
 
