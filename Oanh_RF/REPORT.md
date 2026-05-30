@@ -7,7 +7,7 @@ The goal of this part is to classify cropped traffic sign images into their corr
 
 Random Forest is used because it is simple, explainable, and suitable as a classical machine learning approach for image classification after feature extraction. Since Random Forest cannot directly process full road-scene images like an object detection model, the input images are first cropped using the provided annotation files. Then, the cropped traffic sign images are resized, normalized, flattened, and used as input features for the classifier.
 
----
+
 
 ## 2. Objective
 
