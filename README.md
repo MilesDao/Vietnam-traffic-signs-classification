@@ -180,5 +180,5 @@ python evaluate_svm.py
 ## 👥 Credits
 
 This repository is part of a collaborative academic ML2 project.
-*   **SVM Implementation & Evaluation**: [Minh-NK](https://github.com/MilesDao)
+*   **SVM Implementation & Evaluation**: [Minh-NK](https://github.com/minhnk2410607-spec)
 *   **Random Forest Implementation**: ML2 Course Team Members
