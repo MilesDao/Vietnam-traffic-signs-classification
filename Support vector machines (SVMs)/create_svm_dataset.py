@@ -1,24 +1,19 @@
 import os
 import cv2
 
-img_dir = "archive/images"
-lbl_dir = "archive/labels"
+img_dir = "../Vietnam_traffic_sign/images"
+lbl_dir = "../Vietnam_traffic_sign/labels"
 
-train_file = "archive/split_dataset/train_files.txt"
-test_file = "archive/split_dataset/test_files.txt"
+train_file = "../Vietnam_traffic_sign/split_dataset/train_files.txt"
+test_file = "../Vietnam_traffic_sign/split_dataset/test_files.txt"
 
-
-
-out_root = "rf_dataset"
-
+out_root = "svm_dataset"
 pad = 0.05
-
 
 def read_split(path):
     with open(path, "r") as f:
         files = [line.strip() for line in f.readlines() if line.strip()]
     return files
-
 
 def crop_split(file_list, split_name):
     total_img = 0
@@ -116,9 +111,12 @@ def crop_split(file_list, split_name):
     print("Skipped empty label:", skip_empty_label)
     print("Skipped bad crop:", skip_bad_crop)
 
-
-train_files = read_split(train_file)
-test_files = read_split(test_file)
-
-crop_split(train_files, "train")
-crop_split(test_files, "test")
+if __name__ == "__main__":
+    if not os.path.exists(train_file) or not os.path.exists(test_file):
+        print(f"Error: Split files not found at {train_file} or {test_file}")
+    else:
+        train_files = read_split(train_file)
+        test_files = read_split(test_file)
+        
+        crop_split(train_files, "train")
+        crop_split(test_files, "test")

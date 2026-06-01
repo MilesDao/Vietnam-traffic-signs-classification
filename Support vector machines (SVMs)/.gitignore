@@ -1,0 +1,12 @@
+# Bỏ qua thư mục chứa dữ liệu ảnh (tránh nặng repo)
+svm_dataset/
+
+# Bỏ qua file trích xuất đặc trưng (.npy rất nặng)
+svm_features/
+
+# Bỏ qua file lưu trữ model (.pkl)
+svm_models/
+
+# Bỏ qua các file rác của MacOS hoặc IDE
+.DS_Store
+__pycache__/

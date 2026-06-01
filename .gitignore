@@ -1,0 +1,36 @@
+# Vietnam Traffic Sign Dataset (Ignore raw images and labels)
+Vietnam_traffic_sign/
+
+# Python Cache Files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local SVM artifacts (if generated in other directories)
+**/svm_dataset/
+**/svm_features/
+**/svm_models/
+**/svm_results/
+**/svm_compare_results/
+
+# Local Random Forest artifacts (if generated in other directories)
+**/rf_dataset/
+**/rf_features/
+**/rf_models/
+**/rf_results/
+**/rf_compare_results/
+
+# IDE, OS, and System Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
