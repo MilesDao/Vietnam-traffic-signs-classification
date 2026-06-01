@@ -6,7 +6,7 @@ This report describes the Random Forest part of the traffic sign classification 
 
 The workflow includes image cropping, resizing, normalization, feature extraction, model training, hyperparameter comparison, and final evaluation.
 
----
+
 
 ## 2. Dataset Preparation
 
@@ -21,7 +21,7 @@ The dataset was split into training and testing sets.
 
 Each cropped image belongs to one traffic sign class.
 
----
+
 
 ## 3. Exploratory Data Analysis
 
@@ -31,7 +31,7 @@ To understand the image data, the RGB channel statistics were analyzed after nor
 
 The figure shows the mean and standard deviation of the R, G, and B channels. This analysis is useful because traffic signs strongly depend on color information such as red, blue, yellow, white, and black.
 
----
+
 
 ## 4. Feature Extraction
 
@@ -64,7 +64,7 @@ The class names were also saved in:
 rf_features/class_names.json
 ```
 
----
+
 
 ## 5. Random Forest Model
 
@@ -78,7 +78,7 @@ The main model pipeline is:
 Image features → Random Forest → Predicted traffic sign class
 ```
 
----
+
 
 ## 6. Hyperparameter Comparison
 
@@ -102,15 +102,24 @@ This figure shows the relationship between the number of trees and classificatio
 
 This figure shows that training time increases when the number of estimators becomes larger. Therefore, the final model should balance accuracy and training cost.
 
----
 
 ## 7. Experimental Results
 
 The Random Forest model achieved strong performance on the testing set.
 
-| Model         | Feature Type                 | Test Accuracy |
-| ------------- | ---------------------------- | ------------: |
-| Random Forest | Flattened RGB pixel features |        95.20% |
+| Metric             |  Value |
+| ------------------ | -----: |
+| Accuracy           | 96.41% |
+| Macro Precision    | 94.15% |
+| Macro Recall       | 89.43% |
+| Macro F1-score     | 91.24% |
+| Weighted Precision | 96.45% |
+| Weighted Recall    | 96.41% |
+| Weighted F1-score  | 96.25% |
+
+The model was evaluated on 1,645 test images. The overall accuracy reached 96.41%, showing that the Random Forest classifier performed well on cropped traffic sign images.
+
+The weighted average scores are high, with a weighted F1-score of 96.25%. This means the model performs well for most samples in the dataset. However, the macro average is lower than the weighted average because some classes have very few testing samples. For example, classes 44 and 51 only have one sample each, and both received an F1-score of 0. This shows that class imbalance still affects the model's performance on rare classes.
 
 The detailed classification report was saved in:
 
@@ -118,13 +127,10 @@ The detailed classification report was saved in:
 rf_results/classification_report.txt
 ```
 
-The confusion matrix was also generated to analyze the classification performance across classes.
+The confusion matrix was also generated to analyze which classes were predicted correctly and which classes were confused with each other.
 
 ![Confusion matrix](rf_results/confusion_matrix.png)
 
-The confusion matrix shows which classes were predicted correctly and which classes were confused with each other.
-
----
 
 ## 8. Discussion
 
@@ -134,7 +140,6 @@ However, this approach also has some limitations. Since the model uses flattened
 
 Even so, Random Forest is simple, fast to test, easy to explain, and suitable as a traditional machine learning baseline for this project.
 
----
 
 ## 9. Conclusion
 
