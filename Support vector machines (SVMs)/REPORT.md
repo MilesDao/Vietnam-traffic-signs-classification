@@ -18,9 +18,17 @@ Based on the exhaustive grid search results recorded in `svm_compare_results.csv
 - **When `C` is moderately increased (`C = 1.0` to `10.0`)**: Accuracy skyrockets to 96.7%. This is the **sweet spot** where the model perfectly balances learning from the training data and generalizing to unseen data.
 - **When `C` is excessively large (`C = 100.0`)**: Clear signs of **Overfitting** emerge. The Train Accuracy maxes out at nearly `1.0` (100%)—meaning the model has essentially memorized the training set—yet the Test Accuracy plateaus at 96.7% without further improvement.
 
+![Accuracy by C Parameter](svm_compare_results/accuracy_by_c.png)
+
+![Training Time by C Parameter](svm_compare_results/training_time_by_c.png)
+
+![Overfitting Check](svm_compare_results/overfitting_check.png)
+
 ### The `kernel` Parameter (RBF vs. Linear)
 - **Linear Kernel**: Delivers fast convergence and high initial scores (96.1% at C=0.1). However, as C increases, the Linear kernel hits a "glass ceiling" and drops to 95.3% due to rigid overfitting.
 - **RBF Kernel (Radial Basis Function)**: Demonstrates absolute superiority in flexing decision boundaries. At the optimal point (`C=10.0`, `gamma='scale'`), RBF reaches 96.7%, completely outperforming the Linear Kernel.
+
+![Accuracy Comparison by Kernel Type](svm_compare_results/accuracy_by_kernel.png)
 
 ### The `gamma` Parameter (Radius of Influence)
 - `gamma='scale'` proved to be incredibly effective and stable across all scenarios.
@@ -37,6 +45,8 @@ Through rigorous `RandomizedSearchCV` iterations and manual grid comparison, we 
 ** Final Performance Metrics:**
 *   **Test Accuracy: `96.72%`** *(A massive leap from the 91.0% Baseline model).*
 *   **Macro F1-Score: `95.39%`** *(Demonstrating that the model performs exceptionally well across all 52 classes, accurately classifying even the rarest traffic signs).*
+
+![SVM Confusion Matrix](svm_results/confusion_matrix.png)
 
 ## 4. Conclusion & Future Work
 1. **SVM Viability**: The SVM algorithm is highly capable of tackling basic image recognition tasks (recognizing simple geometric shapes of traffic signs) when provided with accurately cropped data.
