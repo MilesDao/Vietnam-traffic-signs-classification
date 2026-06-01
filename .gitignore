@@ -14,15 +14,19 @@ htmlcov/
 **/svm_dataset/
 **/svm_features/
 **/svm_models/
-**/svm_results/
-**/svm_compare_results/
+**/svm_results/*.npy
+**/svm_results/*.pkl
+**/svm_compare_results/*.npy
+**/svm_compare_results/*.pkl
 
 # Local Random Forest artifacts (if generated in other directories)
 **/rf_dataset/
 **/rf_features/
 **/rf_models/
-**/rf_results/
-**/rf_compare_results/
+**/rf_results/*.npy
+**/rf_results/*.pkl
+**/rf_compare_results/*.npy
+**/rf_compare_results/*.pkl
 
 # IDE, OS, and System Files
 .DS_Store
