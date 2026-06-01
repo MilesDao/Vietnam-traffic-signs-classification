@@ -137,7 +137,13 @@ This script evaluates the trained model on the test set and saves the results in
 ```txt
 rf_results/
 ├── classification_report.txt
-├── confusion_matrix.npy
+└── confusion_matrix.npy
+```
+
+The confusion matrix image is saved in:
+
+```txt
+figures/
 └── confusion_matrix.png
 ```
 
@@ -151,7 +157,8 @@ check_crops/                 # Sample cropped images for checking
 rf_dataset/                  # Cropped train/test dataset
 rf_features/                 # NumPy feature arrays
 rf_models/                   # Saved Random Forest model
-rf_results/                  # Evaluation reports and confusion matrix
+figures/                     # Saved charts and figures (including confusion matrix)
+rf_results/                  # Evaluation reports and metrics
 ```
 
 
@@ -174,7 +181,7 @@ rf_results/classification_report.txt
 The confusion matrix image is saved in:
 
 ```txt
-rf_results/confusion_matrix.png
+figures/confusion_matrix.png
 ```
 
 

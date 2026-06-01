@@ -9,8 +9,10 @@ from sklearn.metrics import accuracy_score, f1_score
 
 feature_dir = "rf_features"
 out_dir = "rf_compare_results"
+fig_dir = "figures"
 
 os.makedirs(out_dir, exist_ok=True)
+os.makedirs(fig_dir, exist_ok=True)
 
 print("Loading features...")
 
@@ -97,7 +99,7 @@ plt.legend()
 plt.grid(True)
 plt.tight_layout()
 
-fig_path = os.path.join(out_dir, "accuracy_by_estimators.png")
+fig_path = os.path.join(fig_dir, "accuracy_by_estimators.png")
 plt.savefig(fig_path, dpi=300)
 plt.close()
 
@@ -120,7 +122,7 @@ plt.legend()
 plt.grid(True)
 plt.tight_layout()
 
-fig_path = os.path.join(out_dir, "accuracy_by_depth.png")
+fig_path = os.path.join(fig_dir, "accuracy_by_depth.png")
 plt.savefig(fig_path, dpi=300)
 plt.close()
 
@@ -138,7 +140,7 @@ plt.ylabel("Training time (seconds)")
 plt.grid(True)
 plt.tight_layout()
 
-fig_path = os.path.join(out_dir, "training_time_by_estimators.png")
+fig_path = os.path.join(fig_dir, "training_time_by_estimators.png")
 plt.savefig(fig_path, dpi=300)
 plt.close()
 

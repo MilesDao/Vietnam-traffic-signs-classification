@@ -13,8 +13,10 @@ from sklearn.metrics import (
 feature_dir = "rf_features"
 model_path = "rf_models/random_forest_flatten.pkl"
 out_dir = "rf_results"
+fig_dir = "figures"
 
 os.makedirs(out_dir, exist_ok=True)
+os.makedirs(fig_dir, exist_ok=True)
 
 print("Loading data...")
 
@@ -80,7 +82,7 @@ plt.xlabel("Predicted label")
 plt.ylabel("True label")
 plt.tight_layout()
 
-fig_path = os.path.join(out_dir, "confusion_matrix.png")
+fig_path = os.path.join(fig_dir, "confusion_matrix.png")
 plt.savefig(fig_path, dpi=300)
 plt.close()
 

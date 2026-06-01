@@ -86,19 +86,19 @@ Several Random Forest settings were tested to compare how model performance chan
 
 ### Effect of Tree Depth
 
-![Accuracy by depth](rf_compare_results/accuracy_by_depth.png)
+![Accuracy by depth](figures/accuracy_by_depth.png)
 
 This figure compares the model accuracy with different maximum tree depths. It helps identify whether deeper trees improve performance or cause overfitting.
 
 ### Effect of Number of Estimators
 
-![Accuracy by estimators](rf_compare_results/accuracy_by_estimators.png)
+![Accuracy by estimators](figures/accuracy_by_estimators.png)
 
 This figure shows the relationship between the number of trees and classification accuracy. Increasing the number of estimators can improve stability, but after a certain point, the improvement becomes smaller.
 
 ### Training Time
 
-![Training time by estimators](rf_compare_results/training_time_by_estimators.png)
+![Training time by estimators](figures/training_time_by_estimators.png)
 
 This figure shows that training time increases when the number of estimators becomes larger. Therefore, the final model should balance accuracy and training cost.
 
@@ -129,7 +129,7 @@ rf_results/classification_report.txt
 
 The confusion matrix was also generated to analyze which classes were predicted correctly and which classes were confused with each other.
 
-![Confusion matrix](rf_results/confusion_matrix.png)
+![Confusion matrix](figures/confusion_matrix.png)
 
 
 ## 8. Discussion
