@@ -31,7 +31,15 @@ Vietnam-traffic-signs-classification/
 │   └── README.md                        # SVM-specific setup & run guide
 │
 ├── RandomForestClassifier/             # Random Forest Classification pipeline
-│   └── REPORT.md                        # Documentation & reports for Random Forest
+│   ├── crop_check.py                    # Verify YOLO bounding box crops manually
+│   ├── create_rf_dataset.py            # Crop traffic signs from raw images with 5% padding
+│   ├── prepare_rf_features.py          # Resize (64x64), normalize, and extract flat features
+│   ├── rf_compare_loop.py              # Hyperparameter comparison sweep & visualization
+│   ├── train_random_forest.py          # Train final Random Forest model & serialize
+│   ├── evaluate_random_forest.py       # Predict, run evaluation metrics & confusion matrix
+│   ├── requirements.txt                 # Project dependencies
+│   ├── REPORT.md                        # Detailed RF performance analysis & report
+│   └── README.md                        # Random Forest-specific setup & run guide
 │
 ├── Vietnam_traffic_sign/               # [Gitignored] Raw dataset folder
 │   ├── images/                          # Raw traffic scene images (.jpg)
@@ -169,6 +177,49 @@ python evaluate_svm.py
 
 ---
 
+## 💻 How to Run the Random Forest Branch
+
+To run the full Random Forest preprocessing, hyperparameter search, and evaluation pipeline:
+
+### Step 1: Check crops manually (Optional)
+Checks whether YOLO bounding boxes are converted correctly and saves sample cropped images under `check_crops/`.
+```bash
+cd RandomForestClassifier
+python crop_check.py
+```
+
+### Step 2: Crop and split the dataset
+Reads raw images and YOLO labels, crops the sign regions with a 5% margin, splits them into `train/` and `test/` sets, and organizes them inside `rf_dataset/`.
+```bash
+python create_rf_dataset.py
+```
+
+### Step 3: Extract feature vectors
+Normalizes, resizes (64x64), and flattens the cropped images into `.npy` feature files inside `rf_features/`:
+```bash
+python prepare_rf_features.py
+```
+
+### Step 4: Run hyperparameter sweep (Optional)
+Executes a sweep comparing max tree depths, number of estimators, and saves comparison charts under `rf_compare_results/`.
+```bash
+python rf_compare_loop.py
+```
+
+### Step 5: Train the Random Forest model
+Trains the final Random Forest classifier on the training set and saves the serialized model as `rf_models/random_forest_flatten.pkl`.
+```bash
+python train_random_forest.py
+```
+
+### Step 6: Evaluate the model
+Loads the trained model, runs predictions on the test set, and outputs a classification report and confusion matrix under `rf_results/`.
+```bash
+python evaluate_random_forest.py
+```
+
+---
+
 ## 🎯 Future Enhancements
 
 *   **Advanced Feature Descriptors**: Introduce **Histogram of Oriented Gradients (HOG)** or Color Histograms to capture edge directions and color layouts rather than raw pixel intensities, increasing robustness to varying illumination.
@@ -181,4 +232,4 @@ python evaluate_svm.py
 
 This repository is part of a collaborative academic ML2 project.
 *   **SVM Implementation & Evaluation**: [Minh-NK](https://github.com/minhnk2410607-spec)
-*   **Random Forest Implementation**: ML2 Course Team Members
+*   **Random Forest Implementation**: [OanhKim-tmd](https://github.com/OanhKim-tmd)
