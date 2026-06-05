@@ -32,7 +32,7 @@ acc = accuracy_score(y_test, y_pred)
 print(f"Test Accuracy: {acc:.4f}")
 
 print("Generating classification report...")
-report = classification_report(y_test, y_pred, zero_division=0)
+report = classification_report(y_test, y_pred, zero_division=0, digits=4)
 print(report)
 
 report_path = os.path.join(results_dir, "classification_report.txt")
