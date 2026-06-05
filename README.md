@@ -98,7 +98,7 @@ Using standard flattened pixels, an exhaustive parameter sweep was performed acr
     - **Class Weights**: `balanced` (Crucial for handling heavily skewed class distributions)
 *   **Performance Achievements**:
     - **Test Accuracy**: **`96.72%`** (An improvement over the `91.00%` baseline SVM)
-    - **Macro F1-Score**: **`95.39%`** (Ensures reliable performance across both high-frequency and rare traffic sign classes)
+    - **Macro F1-Score**: **`95.34%`** (Ensures reliable performance across both high-frequency and rare traffic sign classes)
 
 Detailed SVM reports and learning curves are saved under `Support vector machines (SVMs)/REPORT.md`.
 
